@@ -319,6 +319,44 @@
     align-items: start;
   }
 
+  .about-photo-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .headshot-container {
+    position: relative;
+    width: 220px;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+  }
+
+  .headshot-container img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    filter: grayscale(15%);
+    transition: filter 0.3s;
+  }
+
+  .headshot-container img:hover { filter: grayscale(0%); }
+
+  .headshot-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    border: 2px solid var(--accent);
+    pointer-events: none;
+    opacity: 0.5;
+    transform: translate(6px, 6px);
+    z-index: -1;
+  }
+
   .about-text p {
     font-size: 1.05rem;
     color: var(--text);
@@ -659,6 +697,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
+    <div class="about-photo-wrap">
+      <div class="headshot-container">
+        <img src="hedshot.jpeg" alt="Shaun Patrick Webster" />
+      </div>
     <div class="about-text">
       <div class="section-label">About</div>
       <h2 class="section-title">Real Experience.<br>Real Results.</h2>
@@ -671,8 +713,8 @@
       <p>
         My background spans <strong>Apple, Cisco, and Williams-Sonoma</strong> at the enterprise level before moving into the MSP world. That means I bring corporate discipline to small business problems — without the enterprise price tag.
       </p>
-    </div>
-    <div class="credentials">
+    </div><!-- end about-text -->
+    </div><!-- end about-photo-wrap -->
       <div class="credential-item">
         <div class="cred-icon">☁️</div>
         <div>
